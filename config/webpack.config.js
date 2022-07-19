@@ -343,15 +343,6 @@ module.exports = function (webpackEnv) {
     module: {
       strictExportPresence: true,
       rules: [
-        // 小图片改为base64
-        {
-          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-          loader: require.resolve('url-loader'),
-          options: {
-            limit: imageInlineSizeLimit,
-            name: 'static/media/[name].[hash:8].[ext]'
-          }
-        },
         // Handle node_modules packages that contain sourcemaps
         shouldUseSourceMap && {
           enforce: 'pre',

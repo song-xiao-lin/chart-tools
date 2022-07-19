@@ -44,6 +44,9 @@ const babelRuntimeRegenerator = require.resolve('@babel/runtime/regenerator', {
   paths: [babelRuntimeEntry],
 });
 
+// gzip
+const CompressionPlugin = require("compression-webpack-plugin");
+
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
@@ -564,6 +567,14 @@ module.exports = function (webpackEnv) {
       ].filter(Boolean),
     },
     plugins: [
+      isEnvProduction && new CompressionPlugin({ 
+        test: new RegExp('\\.(js|css)$'), // 匹配开启gzip压缩的文件
+        filename: "[path].gz[query]", // 压缩后静态资源文件名
+        algorithm: "gzip", // 使用的压缩算法
+        threshold: 10240, // 只处理10M以上的资源压缩
+        minRatio: 0.8, // 只处理压缩率小于0.8的资源
+        deleteOriginalAssets: true, // 压缩后是否删除源文件
+      }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(

@@ -1,9 +1,11 @@
 import React from 'react';
+import styles from './index.module.less'
 // import { Outlet } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className='home'>
+    <div className={styles.home}>
+      123
       {/* <Outlet /> */}
     </div>
   )

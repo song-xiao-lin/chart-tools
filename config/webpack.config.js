@@ -47,6 +47,9 @@ const babelRuntimeRegenerator = require.resolve('@babel/runtime/regenerator', {
 // gzip
 const CompressionPlugin = require("compression-webpack-plugin");
 
+// postcss-px2rem-exclude
+const px2rem = require('postcss-pxtorem');
+
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
@@ -146,6 +149,7 @@ module.exports = function (webpackEnv) {
                       stage: 3,
                     },
                   ],
+                  px2rem({ rootValue: 37.5, unitPrecision: 5, propList: ['*'] }),
                   // Adds PostCSS Normalize as the reset css with default options,
                   // so that it honors browserslist config in package.json
                   // which in turn let's users customize the target behavior as per their needs.

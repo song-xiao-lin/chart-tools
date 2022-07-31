@@ -1,14 +1,14 @@
 import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 
-const Home = lazy(() => import('../pages/Home'));
+const Welcome = lazy(() => import('../pages/Welcome'));
 // const News = lazy(() => import("../pages/News"));
 
 const routes = [
-  { path: '/', element: <Navigate to={'/home'} /> },
+  { path: '/', element: <Navigate to={'/welcome'} /> },
   {
-    path: '/home',
-    element: <Home />,
+    path: '/welcome',
+    element: <Welcome />,
     children: [
       // { path: '', element: <News /> }
     ],

@@ -20,6 +20,8 @@ module.exports = {
 		"react"
 	],
 	"rules": {
+		"react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+    "react-hooks/exhaustive-deps": "warn", // 检查 effect 的依赖
 		"eol-last": 1, // 文件以单一的换行符结束
 		"indent": ['error', 2], // 缩进2格
 		"no-mixed-spaces-and-tabs": 'error', // 不能空格与tab混用

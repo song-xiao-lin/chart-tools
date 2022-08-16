@@ -17,7 +17,8 @@ module.exports = {
 		"sourceType": "module"
 	},
 	"plugins": [
-		"react"
+		"react",
+		"react-hooks"
 	],
 	"rules": {
 		"react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
